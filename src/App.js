@@ -4,13 +4,14 @@ import axios from 'axios';
 
 function App() {
   const [pokemon, setPokemon] = useState([])
+  const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon/')
 
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/')
+    axios.get(currentPageUrl)
     .then(res => {
       setPokemon(res.data.results.map(p => p.name))
     })
-  }, [])
+  }, [currentPageUrl])
 
   
 
